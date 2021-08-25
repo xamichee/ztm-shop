@@ -2,16 +2,16 @@ import React from 'react';
 import MenuItem from "../MenuItem/MenuItem";
 import './Homepage.scss'
 
-function Homepage() {
-  const menuItems = ["HATS", "JACKETS", "SNEAKERS", "WOMEN'S", "MEN'S"];
+import menuItems from "../Data/menuItems";
+
+export default function Homepage() {
 
   return (
     <div className="homepage">
       <div className="directory-menu">
-        {menuItems.map(elem => <MenuItem key={elem} title={elem} subtitle="SHOP NOW" />)}
+        {menuItems.map(({id, title, image, size}) =>
+          <MenuItem key={id} title={title} image={image} size={size} subtitle="SHOP NOW"/>)}
       </div>
     </div>
   );
-}
-
-export default Homepage;
+};
