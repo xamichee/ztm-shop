@@ -4,8 +4,8 @@ import PreviewShop from "../PreviewShop/PreviewShop";
 
 import './Shop.scss'
 
-function Shop(props) {
-  const [shopItems, setShopItems] = useState(goods)
+function Shop() {
+  const [shopItems] = useState(goods)
 
   return (
     <div className="shop-page">
