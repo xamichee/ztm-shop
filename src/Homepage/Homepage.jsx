@@ -9,8 +9,8 @@ export default function Homepage() {
   return (
     <div className="homepage">
       <div className="directory-menu">
-        {menuItems.map(({id, title, image, size}) =>
-          <MenuItem key={id} title={title} image={image} size={size} subtitle="SHOP NOW"/>)}
+        {menuItems.map(({id, ...otherProps}) =>
+          <MenuItem key={id} {...otherProps}/>)}
       </div>
     </div>
   );
