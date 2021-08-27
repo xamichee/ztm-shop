@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
 
+import {signInWithGoogle} from '../Firebase/firebase.utils';
+
 import './SignIn.scss'
 
 function SignIn() {
@@ -38,7 +40,10 @@ function SignIn() {
       <form onSubmit={handleSubmit}>
         <FormInput name="email" value={emailInput} type="email" required handleChange={handleChange} label="Email" />
         <FormInput name="password" value={passwordInput} type="password" required onChange={handleChange} label="Password" />
-        <Button type="submit" children={"Submit"} />
+        <div className="buttons">
+          <Button type="submit" children={"Submit"} />
+          <Button onClick={signInWithGoogle} children={"Sign in with Google"} isGoogleSignIn />
+        </div>
       </form>
     </div>
   );
