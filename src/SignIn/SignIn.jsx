@@ -39,7 +39,7 @@ function SignIn() {
 
       <form onSubmit={handleSubmit}>
         <FormInput name="email" value={emailInput} type="email" required handleChange={handleChange} label="Email" />
-        <FormInput name="password" value={passwordInput} type="password" required onChange={handleChange} label="Password" />
+        <FormInput name="password" value={passwordInput} type="password" required handleChange={handleChange} label="Password" />
         <div className="buttons">
           <Button type="submit" children={"Submit"} />
           <Button onClick={signInWithGoogle} children={"Sign in with Google"} isGoogleSignIn />
