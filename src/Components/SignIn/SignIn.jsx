@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
 
-import {auth, signInWithGoogle} from '../Firebase/firebase.utils';
+import {auth, signInWithGoogle} from '../../Firebase/firebase.utils';
 
 import './SignIn.scss'
 

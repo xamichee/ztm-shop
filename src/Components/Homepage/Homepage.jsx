@@ -2,7 +2,7 @@ import React from 'react';
 import MenuItem from "../MenuItem/MenuItem";
 import './Homepage.scss'
 
-import menuItems from "../Data/menuItems";
+import menuItems from "../../Data/menuItems";
 
 export default function Homepage() {
 

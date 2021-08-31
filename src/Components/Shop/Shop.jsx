@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import goods from "../Data/goods";
+import goods from "../../Data/goods";
 import PreviewShop from "../PreviewShop/PreviewShop";
 
 import './Shop.scss'
