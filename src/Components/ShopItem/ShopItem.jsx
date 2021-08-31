@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from "../Button/Button";
 
 import './ShopItem.scss'
 
@@ -15,7 +16,7 @@ function ShopItem({id, name, imageUrl, price}) {
         <span className="name">{ name }</span>
         <span className="price">{ price }</span>
       </div>
-
+      <Button inverted children={'add to cart'}/>
     </div>
   );
 }
