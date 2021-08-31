@@ -6,28 +6,18 @@ import {auth, createUserProfileDocument} from "../Firebase/firebase.utils";
 import './SignUp.scss'
 
 function SignUp() {
-  const [displayName, setDisplayName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [userData, setUserData] = useState({
+    displayName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+  const {displayName, email, password, confirmPassword} = userData;
 
   const handleChange = ({target}) => {
     const {value, name} = target;
-    // eslint-disable-next-line default-case
-    switch (name) {
-      case 'displayName':
-        setDisplayName(value);
-        return;
-      case 'email':
-        setEmail(value);
-        return
-      case 'password':
-        setPassword(value);
-        return
-      case 'confirmPassword':
-        setConfirmPassword(value);
-        return
-    }
+
+    setUserData({...userData, [name]: value})
   };
 
   const handleSubmit = async (event) => {
@@ -40,11 +30,12 @@ function SignUp() {
       const {user} = await auth.createUserWithEmailAndPassword(email, password);
 
       await createUserProfileDocument(user, {displayName});
-      setDisplayName('');
-      setEmail('');
-      setPassword('');
-      setConfirmPassword('');
-
+      setUserData({
+        displayName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+      })
     } catch (error) {
       console.error(error);
     }
