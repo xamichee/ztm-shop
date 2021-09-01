@@ -12,8 +12,8 @@ function PreviewShop({title, items}) {
         {
           items
             .filter((item, idx) => idx < 4)
-            .map(({id, ...itemProps}) => (
-              <ShopItem key={id} {...itemProps} />
+            .map((item) => (
+              <ShopItem key={item.id} item={item} />
             ))
         }
       </div>
