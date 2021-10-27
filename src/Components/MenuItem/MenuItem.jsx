@@ -1,11 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-const MenuItem = ({title, image, size, history, match}) => {
+const MenuItem = ({title, image, size, linkUrl, history}) => {
   return (
     <div
       className={`${size} menu-item`}
-      onClick={() => history.push(`${match.url}${title}`)}>
+      onClick={() => history.push(`${linkUrl}`)}>
       <div
         className="background-image"
         style={{backgroundImage: `url(${image})`}} />
