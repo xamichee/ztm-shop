@@ -4,16 +4,16 @@ import {connect} from "react-redux";
 import { createStructuredSelector} from "reselect";
 import { selectDirectoryMenuItems } from "../../redux/directory/directory.selector";
 
-import './Homepage.scss'
+import { HomepageContainer, DirectoryContainer } from "./Homepage.styles";
 
 function Homepage({ menuItems }) {
   return (
-    <div className="homepage">
-      <div className="directory-menu">
+    <HomepageContainer>
+      <DirectoryContainer>
         {menuItems.map(({id, ...otherProps}) =>
           <MenuItem key={id} {...otherProps}/>)}
-      </div>
-    </div>
+      </DirectoryContainer>
+    </HomepageContainer>
   );
 }
 
