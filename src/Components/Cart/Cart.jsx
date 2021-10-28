@@ -3,28 +3,27 @@ import {connect} from "react-redux";
 import { createStructuredSelector } from "reselect";
 import {withRouter} from 'react-router-dom';
 
-import Button from '../Button/Button';
 import CartItem from "../CartItem/CartItem";
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import { toggleCartHidden } from "../../redux/cart/cart.actions";
 
-import './Cart.scss';
+import {CartContainer, CartItemsContainer, CartButton, EmptyMessage} from "./Cart.styles";
 
 function Cart({cartItems, history, dispatch }) {
   return (
-    <div className="cart">
-      <div className="cart-items">
+    <CartContainer>
+      <CartItemsContainer>
         {
           cartItems.length ?
             cartItems.map(cartItem => <CartItem key={cartItem.id} item={cartItem} />)
-              : <span className="empty-message">Your cart is empty</span>
+              : <EmptyMessage>Your cart is empty</EmptyMessage>
         }
-      </div>
-      <Button onClick={() => {
+      </CartItemsContainer>
+      <CartButton onClick={() => {
         history.push('/checkout');
         dispatch(toggleCartHidden());
       }} children={'Go to checkout'}/>
-    </div>
+    </CartContainer>
   );
 }
 

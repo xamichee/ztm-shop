@@ -13,8 +13,6 @@ import Checkout from "../Checkout/Checkout";
 import {setCurrentUser} from '../../redux/user/user.actions';
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 
-import './App.css';
-
 function App({setCurrentUser, currentUser}) {
 
   useEffect(() => {

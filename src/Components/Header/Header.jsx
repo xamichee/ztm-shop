@@ -9,7 +9,7 @@ import Cart from '../Cart/Cart';
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 
-import {HeaderContainer, LogoContainer, OptionsContainer, OptionLink, OptionDiv} from "./Header.styles";
+import {HeaderContainer, LogoContainer, OptionsContainer, OptionLink} from "./Header.styles";
 
 function Header({ currentUser, hidden }) {
   return (
@@ -22,13 +22,13 @@ function Header({ currentUser, hidden }) {
         <OptionLink to='/contact'>CONTACT</OptionLink>
         {
           currentUser ?
-            <OptionDiv onClick={() => auth.signOut()}>SIGN OUT</OptionDiv>
+            <OptionLink as='div' onClick={() => auth.signOut()}>SIGN OUT</OptionLink>
             :
             <OptionLink to='/signin'>SIGN IN</OptionLink>
         }
-        <CartIcon />
+        {currentUser && <CartIcon/>}
       </OptionsContainer>
-      { hidden ? null : <Cart /> }
+      {hidden ? null : <Cart /> }
     </HeaderContainer>
   );
 }
