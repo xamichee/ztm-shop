@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
+import {connect} from "react-redux";
+
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
 
-import {auth, signInWithGoogle} from '../../Firebase/firebase.utils';
+import { googleSignInStart, emailSignInStart} from "../../redux/user/user.actions";
 
 import './SignIn.scss'
 
-function SignIn() {
+function SignIn({googleSignInStart, emailSignInStart}) {
   const [userData, setUserData] = useState({email: '', password: ''});
   const {email, password} = userData;
 
@@ -17,12 +19,7 @@ function SignIn() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      setUserData({email: '', password: ''});
-    } catch (error) {
-      console.error(error);
-    }
+    emailSignInStart(userData)
   }
 
   return (
@@ -36,11 +33,13 @@ function SignIn() {
                    label="Password"/>
         <div className="buttons">
           <Button type="submit" children={"Submit"}/>
-          <Button onClick={signInWithGoogle} children={"Sign in with Google"} isGoogleSignIn/>
+          <Button type="button" onClick={googleSignInStart} children={"Sign in with Google"} isGoogleSignIn/>
         </div>
       </form>
     </div>
   );
 }
 
-export default SignIn;
+const mapDispatchToProps = {googleSignInStart, emailSignInStart}
+
+export default connect(null, mapDispatchToProps)(SignIn);
