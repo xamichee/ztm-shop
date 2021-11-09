@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
+import {connect} from "react-redux";
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
-import {auth, createUserProfileDocument} from "../../Firebase/firebase.utils";
+
+import { signUpStart  } from "../../redux/user/user.actions";
 
 import './SignUp.scss'
 
-function SignUp() {
+function SignUp({signUpStart}) {
   const [userData, setUserData] = useState({
     displayName: '',
     email: '',
@@ -26,19 +28,7 @@ function SignUp() {
       alert("Passwords don't match");
       return;
     }
-    try {
-      const {user} = await auth.createUserWithEmailAndPassword(email, password);
-
-      await createUserProfileDocument(user, {displayName});
-      setUserData({
-        displayName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-      })
-    } catch (error) {
-      console.error(error);
-    }
+    signUpStart({email, password, displayName});
   };
 
   return (
@@ -60,4 +50,6 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+const mapDispatchToProps = { signUpStart}
+
+export default connect(null, mapDispatchToProps )(SignUp);
